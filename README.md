@@ -8,8 +8,8 @@ We haz maps for you LA!
 
 Directions
 =========
-1. Open Terminal and clone this repository by running `git clone https://github.com/maptimeLA/GIS-Resources-Map.git`
-2. `cd Project-Pizza`
+1. Open Terminal and clone this repository by running `git clone https://github.com/maptimeLA/projectLA`
+2. `cd projectLA`
 3. `python -m SimpleHTTPServer 8000`
 4. Go to your browser and open `http://localhost:8000/`
 5. To open on your phone, find your IP address and open `http://[YOUR-IP-ADDRESS]:8000/`
@@ -25,4 +25,3 @@ Update `gh-pages` branch
 Visit
 ========
 http://maptimela.github.io/GIS-Resources-Map/
- 
