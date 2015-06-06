@@ -21,6 +21,7 @@
   <script src="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js"></script>
   <script src="http://cdn.jsdelivr.net/leaflet.esri/latest/esri-leaflet.js"></script>
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.4.2.min.js"></script>
 </head>
 <body>
 
@@ -36,7 +37,44 @@
   </div>
 
   <div class="row">
-    <div class="col-md-3">Form</div>
+    <div class="col-md-3">
+      <form>
+        <div class="form-group">
+          <label for="originLocation">What's your name?</label>
+          <input type="text" class="form-control" name="userName" id="userName" placeholder="Enter your first and last name">
+        </div>
+        <div class="form-group">
+          <label for="originLocation">Where are you travelling from?</label>
+          <input type="text" class="form-control" name="originName" id="originLocation" placeholder="Enter the your origin address">
+        </div>
+
+        <h4>Which travel options are you open to using?</h4>
+        <div id="travelOptions">
+          <label class="checkbox-inline">
+            <input type="checkbox" id="inlineCheckbox1" name="travelOptions" value="Car"> Car
+          </label>
+          <label class="checkbox-inline">
+            <input type="checkbox" id="inlineCheckbox2" name="travelOptions" value="Bicycle"> Bicycle
+          </label>
+          <label class="checkbox-inline">
+            <input type="checkbox" id="inlineCheckbox3" name="travelOptions" value="Metro"> Metro
+          </label>
+            <label class="checkbox-inline">
+            <input type="checkbox" id="inlineCheckbox3" name="travelOptions" value="uberCarpool"> Uber Carpool
+          </label>
+          <label class="checkbox-inline">
+            <input type="checkbox" id="inlineCheckbox3" name="travelOptions" value="lyftCarpool">Lyft Carpool
+          </label>
+          <label class="checkbox-inline">
+            <input type="checkbox" id="inlineCheckbox3" name="travelOptions" value="walking">Walking
+          </label>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+
+      </form>
+      <div id="alert" class="alert hide" role="alert"></div>
+    </div>
     <div class="col-md-9">
       <div id="map"></div>
     </div>
@@ -52,7 +90,7 @@
 				'Imagery © <a href="http://mapbox.com">Mapbox</a>',
 			id: 'examples.map-i875mjb7'
 		}).addTo(map);
-        
+
     //Create locations for geojson
     L.esri.featureLayer('http://services.arcgis.com/obpUicnfIYG1DOsR/arcgis/rest/services/lacounty/FeatureServer/0').addTo(map);
         
@@ -72,5 +110,36 @@
       .bindPopup("811 Wilshire Blvd. #1460")
       .openPopup();
 	</script>
+  <script type="text/javascript">
+    Parse.initialize("6HzSsTcCp9FKm5Vy9yse5yHMXazdIX3n3zn0vMJA", "l3QRS3vcjfNttOuOwub8GgWXF4aSLewLMipnQM3F");
+
+    $('form').submit(function() {
+      var UserData = Parse.Object.extend("UserData"), user = new UserData();
+      var $form = $(this), formData = $form.serializeArray();
+
+      var travelOptions = [];
+      for (var i = 0; i < formData.length; i++) {
+        if (formData[i].name == 'travelOptions') {
+          travelOptions.push(formData[i].value);
+        }
+      }
+
+      var data = {
+        userName: $('#userName').val(),
+        originLocation: $('#originLocation').val(),
+        travelOptions: travelOptions
+      };
+      user.save(data, {
+        success: function() {
+          $('#alert').toggleClass('alert-success hide').text('You did it! Good job!');
+        }, error: function() {
+          $('#alert').toggleClass('alert-danger hide').text('Bad things happened');
+        }
+      });
+      console.log($(this).serializeArray());
+      return false;
+    });
+  </script>
+
 </body>
 </html>
