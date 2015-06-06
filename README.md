@@ -8,7 +8,7 @@ We haz maps for you LA!
 
 Directions
 =========
-1. Open Terminal and clone this repository by running `git clone https://github.com/maptimeLA/Project-Pizza.git`
+1. Open Terminal and clone this repository by running `git clone https://github.com/maptimeLA/GIS-Resources-Map.git`
 2. `cd Project-Pizza`
 3. `python -m SimpleHTTPServer 8000`
 4. Go to your browser and open `http://localhost:8000/`
