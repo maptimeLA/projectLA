@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css" />
     <script src="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js"></script>
+    <script src="http://cdn.jsdelivr.net/leaflet.esri/latest/esri-leaflet.js"></script>
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <style>
   body { margin:0; padding:0; }
@@ -26,23 +27,21 @@
 			id: 'examples.map-i875mjb7'
 		}).addTo(map);
         
-        //Create locations for geojson
-        var cities="data/lacities.geojson";
+        L.esri.featureLayer('http://services.arcgis.com/obpUicnfIYG1DOsR/arcgis/rest/services/lacounty/FeatureServer/0').addTo(map);
         
-        //Styles and loads the Hubs
-        $.getJSON(cities, function(data) {
-        var hubsLayer = L.geoJson(data, {
-                style:{
-                fillColor:"#ff7f00",
-                color: "#ff7f00",
+        // L.esri.featureLayer('http://services1.arcgis.com/AXaYBvnJsB5Q7sDF/arcgis/rest/services/lacities/FeatureServer/0').addTo(map);
+        
+        var cities = L.esri.featureLayer('http://services1.arcgis.com/AXaYBvnJsB5Q7sDF/arcgis/rest/services/lacities/FeatureServer/0', {
+            simplifyFactor: 0.35,
+            style: function(feature) {
+              return {
+                color: '#555',
                 weight: 1,
-                opacity: 1,
-                fillOpacity: 0.05
-                },
-        
-         
+                opacity: 1
+              }
+            }
         }).addTo(map);
-        });
+        
         
 	</script>
 </body>
