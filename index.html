@@ -48,23 +48,25 @@
 			id: 'examples.map-i875mjb7'
 		}).addTo(map);
         
-        //Create locations for geojson
-        // var cities="data/lacities.geojson";
+    //Create locations for geojson
+    var cities="data/lacities.geojson";
         
-        //Styles and loads the Hubs
-        $.getJSON(cities, function(data) {
-        var hubsLayer = L.geoJson(data, {
-                style:{
-                fillColor:"#ff7f00",
-                color: "#ff7f00",
-                weight: 1,
-                opacity: 1,
-                fillOpacity: 0.05
-                },
-        
-         
-        }).addTo(map);
-        });
+    //Styles and loads the Hubs
+    $.getJSON(cities, function(data) {
+      var hubsLayer = L.geoJson(data, {
+        style:{
+        fillColor:"#ff7f00",
+        color: "#ff7f00",
+        weight: 1,
+        opacity: 1,
+        fillOpacity: 0.05
+      },}).addTo(map);
+    });
+
+    //Add meetup location
+    L.marker([34.049814, -118.258197]).addTo(map)
+      .bindPopup("811 Wilshire Blvd. #1460")
+      .openPopup();
 	</script>
 </body>
 </html>
