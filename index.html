@@ -35,13 +35,12 @@
                 style:{
                 fillColor:"#ff7f00",
                 color: "#ff7f00",
-                weight: 0,
-                opacity: 0,
-                fillOpacity: 0.35
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.05
                 },
-        onEachFeature: function (feature, layer) {
-        layer.bindPopup(feature.properties.cities);
-        }
+        
+         
         }).addTo(map);
         });
         
