@@ -21,3 +21,8 @@ Update `gh-pages` branch
 3. `git rebase master`
 4. `git push origin gh-pages`
 5. Visit at http://maptimela.github.io/projectLA/
+
+Visit
+========
+http://maptimela.github.io/GIS-Resources-Map/
+ 
