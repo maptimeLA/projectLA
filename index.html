@@ -3,16 +3,15 @@
 <head>
 	<title>project Meetup | LA</title>
 	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js"></script>
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 
   <!-- CSS
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link rel="stylesheet" href="css/normalize.css">
-  <link rel="stylesheet" href="css/skeleton.css">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css" />
-  <link href="/css/style.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
 
   <!-- Favicon
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -20,43 +19,52 @@
 </head>
 <body>
 
-  <div class="container">
-    <div class="row">
-      <div class="three column">Form</div>
-      <div class="nine column">
-        <div id="map"></div>
-      </div>
+  <div class="row">
+    <div class="col-md-3">
+      Logo
+    </div>
+    <div class="col-md-9">
+      <h1>Meetup #1</h1>
+      <h3>123 Wilshire Blvd. | Civic Center: Red Line @ 7PM</h3>
+      <p>Hello! Parking costs $15 in the building. There is underground bike parking. Lot closes at 10:30PM. Call to get into the room: 310-123-1234</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">Form</div>
+    <div class="col-md-9">
+      <div id="map"></div>
     </div>
   </div>
 
 	<script>
-		// var map = L.map('map').setView([34.052234, -118.243685], 13);
+		var map = L.map('map').setView([34.052234, -118.243685], 13);
 
-		// L.tileLayer('http://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.png', {
-		// 	maxZoom: 18,
-		// 	attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
-		// 		'<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-		// 		'Imagery © <a href="http://mapbox.com">Mapbox</a>',
-		// 	id: 'examples.map-i875mjb7'
-		// }).addTo(map);
+		L.tileLayer('http://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.png', {
+			maxZoom: 18,
+			attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+				'<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+				'Imagery © <a href="http://mapbox.com">Mapbox</a>',
+			id: 'examples.map-i875mjb7'
+		}).addTo(map);
         
-  //       //Create locations for geojson
-  //       // var cities="data/lacities.geojson";
+        //Create locations for geojson
+        // var cities="data/lacities.geojson";
         
-  //       //Styles and loads the Hubs
-  //       $.getJSON(cities, function(data) {
-  //       var hubsLayer = L.geoJson(data, {
-  //               style:{
-  //               fillColor:"#ff7f00",
-  //               color: "#ff7f00",
-  //               weight: 1,
-  //               opacity: 1,
-  //               fillOpacity: 0.05
-  //               },
+        //Styles and loads the Hubs
+        $.getJSON(cities, function(data) {
+        var hubsLayer = L.geoJson(data, {
+                style:{
+                fillColor:"#ff7f00",
+                color: "#ff7f00",
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.05
+                },
         
          
-  //       }).addTo(map);
-  //       });
+        }).addTo(map);
+        });
 	</script>
 </body>
 </html>
