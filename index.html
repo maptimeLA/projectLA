@@ -101,7 +101,7 @@
     }).addTo(map);
         
     var cities = L.esri.featureLayer('http://services1.arcgis.com/AXaYBvnJsB5Q7sDF/arcgis/rest/services/lacities/FeatureServer/0', {
-        simplifyFactor: 0.35,
+        simplifyFactor: 0.9,
         style: function(feature) {
           return {
             color: '#00ADE0',
