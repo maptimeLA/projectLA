@@ -41,18 +41,32 @@
     font-family:"yes please", Arial;
   }
   #top h1, h2, p{
-    color: #25ABD2;
+    font-size: 25px;
+    color: white;
     text-align: center;
     /*link color to white*/
   }
-  #top p{
-    border: 1px 1px 1px 1px;
+  #op p{
+    text-align: center;
+  }
+  #button{
+    text-align: center;
+    background-color: #25ABD2;
+    color: white;
+    padding: 8px 15px 8px 15px;
+  }
+  #button a{
+    font-size: 20px;
+    text-decoration: none;
+  }
+  #top a:link, a:hover, a:visited, a:active{
+    color: white;
   }
   #top {
     /*center the text in the middle of the screen*/
   }
   #top img{
-    max-width: 350px;
+    max-width: 325px;
     margin-right: auto;
     margin-left: auto;
     padding-top: 30px;
