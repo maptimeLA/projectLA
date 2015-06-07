@@ -30,9 +30,8 @@
       <img src="https://raw.githubusercontent.com/maptimeLA/projectLA/master/images/poolpartycarlogo.jpg" div id="logo">
     </div>
     <div class="col-md-9">
-      <h1>Event: Awesome Community Hackathon</h1>
-      <h3>811 Wilshire Blvd. | Civic Center: Red Line @ 7PM</h3>
-      <p>Hello! Parking costs $15 in the building. There is underground bike parking. Lot closes at 10:30PM. Call to get into the room: 310-123-1234</p>
+      <h1>Event: Boyle Heights Neighborhood Council Meeting</h1>
+      <h3>2200 E. 1st St. | Benjamin Franklin Library: Gold Line @ 6:15PM</h3>
     </div>
   </div>
 
@@ -111,7 +110,7 @@
           }
         }
     }).addTo(map);
-        
+
     var metro = L.esri.featureLayer('http://services1.arcgis.com/AXaYBvnJsB5Q7sDF/arcgis/rest/services/MetroCombined/FeatureServer/0', {
         style: function (feature) {
             var c,o = 1;
@@ -144,7 +143,7 @@
       return {color: c, opacity: o, weight: 5};
     }
   }).addTo(map);
-     
+
     //Add meetup location
     L.marker([34.049814, -118.258197]).addTo(map)
       .bindPopup("811 Wilshire Blvd. #1460")
