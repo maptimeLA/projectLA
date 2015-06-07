@@ -14,12 +14,12 @@
   <!-- Favicon
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link rel="icon" type="image/png" href="images/favicon.png">
-	
+
   <!-- Javascript and Maps
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css" />
   <script src="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js"></script>
-  <script src="http://cdn.jsdelivr.net/leaflet.esri/latest/esri-leaflet.js"></script>
+  <script src="http://cdn.jsdelivr.net/leaflet.esri/1.0.0-rc.8/esri-leaflet.js"></script>
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.4.2.min.js"></script>
 </head>
@@ -27,12 +27,11 @@
 
   <div class="row">
     <div class="col-md-3">
-      <img src="https://raw.githubusercontent.com/maptimeLA/projectLA/master/images/poolpartycarlogo.jpg" div id="logo"> 
+      <img src="https://raw.githubusercontent.com/maptimeLA/projectLA/master/images/poolpartycarlogo.jpg" div id="logo">
     </div>
     <div class="col-md-9">
-      <h1>Event: Awesome Community Hackathon</h1>
-      <h3>811 Wilshire Blvd. | Civic Center: Red Line @ 7PM</h3>
-      <p>Hello! Parking costs $15 in the building. There is underground bike parking. Lot closes at 10:30PM. Call to get into the room: 310-123-1234</p>
+      <h1>Event: Boyle Heights Neighborhood Council Meeting</h1>
+      <h3>2200 E. 1st St. | Benjamin Franklin Library: Gold Line @ 6:15PM</h3>
     </div>
   </div>
 
@@ -87,7 +86,7 @@
         L.esri.basemapLayer('GrayLabels').addTo(map);
 
 
-      //Loading ESRI Feature Services 
+      //Loading ESRI Feature Services
     var county = L.esri.featureLayer('http://services.arcgis.com/obpUicnfIYG1DOsR/arcgis/rest/services/lacounty/FeatureServer/0', {
         simplifyFactor: 0.35,
         style: function(feature) {
@@ -99,7 +98,55 @@
           }
         }
     }).addTo(map);
-        
+
+   var cities = L.esri.featureLayer('http://services1.arcgis.com/AXaYBvnJsB5Q7sDF/arcgis/rest/services/lacities/FeatureServer/0', {
+        simplifyFactor: 0.35,
+        style: function(feature) {
+          return {
+            color: '#00ADE0',
+            weight: 1,
+            opacity: 1,
+            fillOpacity: 0.03
+          }
+        }
+    }).addTo(map);
+
+    var metro = L.esri.featureLayer('http://services1.arcgis.com/AXaYBvnJsB5Q7sDF/arcgis/rest/services/MetroCombined/FeatureServer/0', {
+        style: function (feature) {
+            var c,o = 1;
+            switch (feature.properties.LineName) {
+               case 'Blue Line':
+                    c = '#0070BE';
+                    break;
+                case 'Gold Line':
+                    c = '#FFBE00';
+                    break;
+                case 'Red/Purple Lines':
+                    c = '#ED1717';
+                    break;
+                case 'Orange Line':
+                    c = '#F77903';
+                  break;
+                case 'Expo Line':
+                    c = '#00A3E8';
+                    break;
+                case 'Green Line':
+                    c = '#69C167';
+                    break;
+                case 'Silver Line':
+                    c = '#AEB9BD';
+                    break;
+                case 'Orange Line':
+                    c = '#F77903';
+                    break;
+      }
+      return {color: c, opacity: o, weight: 5};
+    }
+  }).addTo(map);
+
+    //Add meetup location
+    L.marker([34.049814, -118.258197]).addTo(map)
+      .bindPopup("811 Wilshire Blvd. #1460")
     //Create locations for geojson
     var cities="data/lacities.geojson";
 
@@ -117,33 +164,37 @@
 
     }).addTo(map);
     });
-                    
+
         // layer for meetup info:
-        var popupLocation1 = new L.LatLng(34.049814, -118.258197);
-        var popupContent1 = "<h3>Event Location</h3><p>811 Wilshire Blvd.</p>",
+        var popupLocation1 = new L.LatLng(34.044121, -118.212200);
+        var popupContent1 = "<h4><a href='http://bhnc.net'>Boyle Heights Neighborhood Council Meeting</a></h4> \
+        <address> \
+        Benjamin Franklin Library<br /> \
+        2200 E. 1st St.<br /> \
+        Los Angeles, CA 90033</address>",
         popup1 = new L.Popup();
-        
-        //Add meetup location    
-        L.marker([34.049814, -118.258197]).addTo(map).bindPopup(popup1);              
-        
-        
+
+        //Add meetup location
+        L.marker([34.044121, -118.212200]).addTo(map).bindPopup(popup1);
+
+
         popup1.setLatLng(popupLocation1);
         popup1.setContent(popupContent1);
-        map.addLayer(popup1);        
-        
+        map.addLayer(popup1);
+
         // friend markers:
         L.marker([34.062724, -118.297962]).addTo(map)
       .bindPopup("Mary Sue");
         L.marker([34.065936, -118.272131]).addTo(map)
       .bindPopup("Gary Stu");
         L.marker([34.055945, -118.286980]).addTo(map)
-      .bindPopup("Cary Wu");            
-        
+      .bindPopup("Cary Wu");
+
     //Add user location
     L.marker([34.065296, -118.287881]).addTo(map)
       .bindPopup('<h3>Your Starting Location</h3>You have <strong>3</strong> neighbors within <strong>2 miles</strong> of your starting location who want to carpool!<br/><br/> <button type="submit" class="btn btn-primary">Offer to Carpool</button>')
       .openPopup();
-        
+
 	</script>
   <script type="text/javascript">
     Parse.initialize("6HzSsTcCp9FKm5Vy9yse5yHMXazdIX3n3zn0vMJA", "l3QRS3vcjfNttOuOwub8GgWXF4aSLewLMipnQM3F");
