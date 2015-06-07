@@ -43,7 +43,7 @@
   #top h1, h2, p{
     font-size: 25px;
     text-align: center;
-    color: #333;
+    color: #fff;
     /*link color to white*/
   }
   #op p{
@@ -60,7 +60,7 @@
     text-decoration: none;
   }
   #top a:link, a:hover, a:visited, a:active{
-    color: #333;
+    color: #fff;
   }
   #top {
     /*center the text in the middle of the screen*/
