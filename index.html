@@ -35,7 +35,7 @@
     <h1>matching </h1>
     <br>
     <h2><a href="latimes.com/local/california/la-me-hackathon-20150607-story.html">"...fixing LA's perennial problem: commuting." <br>-<i>Los Angeles Times</i></a></h2>
-    <p><a href="#bottomHalf">Let's go!</a></p>
+    <p><a class="scroll-link" href="#bottomHalf">Let's go!</a></p>
     </div>
   </div>
 
@@ -244,6 +244,13 @@
       });
       console.log($(this).serializeArray());
       return false;
+    });
+
+    $('.scroll-link').click(function(e) {
+      e.preventDefault();
+      $('body, html').animate({
+        'scrollTop':   $($(this).attr("href")).offset().top - $('.navbar').height() - 10
+      }, 400);
     });
   </script>
 
