@@ -19,7 +19,7 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css" />
   <script src="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js"></script>
-  <script src="http://cdn.jsdelivr.net/leaflet.esri/latest/esri-leaflet.js"></script>
+  <script src="http://cdn.jsdelivr.net/leaflet.esri/1.0.0-rc.8/esri-leaflet.js"></script>
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.4.2.min.js"></script>
 </head>
@@ -100,16 +100,50 @@
         }
     }).addTo(map);
         
-    var cities = L.esri.featureLayer('http://services1.arcgis.com/AXaYBvnJsB5Q7sDF/arcgis/rest/services/lacities/FeatureServer/0', {
+   var cities = L.esri.featureLayer('http://services1.arcgis.com/AXaYBvnJsB5Q7sDF/arcgis/rest/services/lacities/FeatureServer/0', {
         simplifyFactor: 0.35,
         style: function(feature) {
           return {
             color: '#00ADE0',
-            weight: 2,
-            opacity: 1
+            weight: 1,
+            opacity: 1,
+            fillOpacity: 0.03
           }
         }
     }).addTo(map);
+        
+    var metro = L.esri.featureLayer('http://services1.arcgis.com/AXaYBvnJsB5Q7sDF/arcgis/rest/services/MetroCombined/FeatureServer/0', {
+        style: function (feature) {
+            var c,o = 1;
+            switch (feature.properties.LineName) {
+               case 'Blue Line':
+                    c = '#0070BE';
+                    break;
+                case 'Gold Line':
+                    c = '#FFBE00';
+                    break;
+                case 'Red/Purple Lines':
+                    c = '#ED1717';
+                    break;
+                case 'Orange Line':
+                    c = '#F77903';
+                  break;
+                case 'Expo Line':
+                    c = '#00A3E8';
+                    break;
+                case 'Green Line':
+                    c = '#69C167';
+                    break;
+                case 'Silver Line':
+                    c = '#AEB9BD';
+                    break;
+                case 'Orange Line':
+                    c = '#F77903';
+                    break;
+      }
+      return {color: c, opacity: o, weight: 5};
+    }
+  }).addTo(map);
                 
     //Add meetup location
     L.marker([34.049814, -118.258197]).addTo(map)
