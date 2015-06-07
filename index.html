@@ -30,8 +30,8 @@
       <img src="https://raw.githubusercontent.com/maptimeLA/projectLA/master/images/poolpartycarlogo.jpg" div id="logo"> 
     </div>
     <div class="col-md-9">
-      <h1>Meetup #1</h1>
-      <h3>123 Wilshire Blvd. | Civic Center: Red Line @ 7PM</h3>
+      <h1>Event: Awesome Community Hackathon</h1>
+      <h3>811 Wilshire Blvd. | Civic Center: Red Line @ 7PM</h3>
       <p>Hello! Parking costs $15 in the building. There is underground bike parking. Lot closes at 10:30PM. Call to get into the room: 310-123-1234</p>
     </div>
   </div>
@@ -100,21 +100,50 @@
         }
     }).addTo(map);
         
-    var cities = L.esri.featureLayer('http://services1.arcgis.com/AXaYBvnJsB5Q7sDF/arcgis/rest/services/lacities/FeatureServer/0', {
-        simplifyFactor: 0.9,
-        style: function(feature) {
-          return {
-            color: '#00ADE0',
-            weight: 2,
-            opacity: 1
-          }
-        }
+    //Create locations for geojson
+    var cities="data/lacities.geojson";
+
+    //Styles and loads the Hubs
+    $.getJSON(cities, function(data) {
+    var hubsLayer = L.geoJson(data, {
+            style:{
+            fillColor:"#ff7f00",
+            color: "#ff7f00",
+            weight: 1,
+            opacity: 1,
+            fillOpacity: 0.05
+            },
+
+
     }).addTo(map);
-                
-    //Add meetup location
-    L.marker([34.049814, -118.258197]).addTo(map)
-      .bindPopup("811 Wilshire Blvd. #1460")
+    });
+                    
+        // layer for meetup info:
+        var popupLocation1 = new L.LatLng(34.049814, -118.258197);
+        var popupContent1 = "<h3>Event Location</h3><p>811 Wilshire Blvd.</p>",
+        popup1 = new L.Popup();
+        
+        //Add meetup location    
+        L.marker([34.049814, -118.258197]).addTo(map).bindPopup(popup1);              
+        
+        
+        popup1.setLatLng(popupLocation1);
+        popup1.setContent(popupContent1);
+        map.addLayer(popup1);        
+        
+        // friend markers:
+        L.marker([34.062724, -118.297962]).addTo(map)
+      .bindPopup("Mary Sue");
+        L.marker([34.065936, -118.272131]).addTo(map)
+      .bindPopup("Gary Stu");
+        L.marker([34.055945, -118.286980]).addTo(map)
+      .bindPopup("Cary Wu");            
+        
+    //Add user location
+    L.marker([34.065296, -118.287881]).addTo(map)
+      .bindPopup('<h3>Your Starting Location</h3>You have <strong>3</strong> neighbors within <strong>2 miles</strong> of your starting location who want to carpool!<br/><br/> <button type="submit" class="btn btn-primary">Offer to Carpool</button>')
       .openPopup();
+        
 	</script>
   <script type="text/javascript">
     Parse.initialize("6HzSsTcCp9FKm5Vy9yse5yHMXazdIX3n3zn0vMJA", "l3QRS3vcjfNttOuOwub8GgWXF4aSLewLMipnQM3F");
