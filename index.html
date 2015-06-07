@@ -82,24 +82,30 @@
 
 	<script>
 		var map = L.map('map').setView([34.052234, -118.243685], 13);
+        //Loading ESRI Basemap and Labels
+		L.esri.basemapLayer('Gray').addTo(map);
+        L.esri.basemapLayer('GrayLabels').addTo(map);
 
-		L.tileLayer('http://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.png', {
-			maxZoom: 18,
-			attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
-				'<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-				'Imagery © <a href="http://mapbox.com">Mapbox</a>',
-			id: 'examples.map-i875mjb7'
-		}).addTo(map);
 
-    //Create locations for geojson
-    L.esri.featureLayer('http://services.arcgis.com/obpUicnfIYG1DOsR/arcgis/rest/services/lacounty/FeatureServer/0').addTo(map);
+      //Loading ESRI Feature Services 
+    var county = L.esri.featureLayer('http://services.arcgis.com/obpUicnfIYG1DOsR/arcgis/rest/services/lacounty/FeatureServer/0', {
+        simplifyFactor: 0.35,
+        style: function(feature) {
+          return {
+            color: '#555',
+            fill: null,
+            weight: 3,
+            opacity: 50,
+          }
+        }
+    }).addTo(map);
         
     var cities = L.esri.featureLayer('http://services1.arcgis.com/AXaYBvnJsB5Q7sDF/arcgis/rest/services/lacities/FeatureServer/0', {
         simplifyFactor: 0.35,
         style: function(feature) {
           return {
-            color: '#555',
-            weight: 1,
+            color: '#00ADE0',
+            weight: 2,
             opacity: 1
           }
         }
