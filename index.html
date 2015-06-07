@@ -144,28 +144,7 @@
     }
   }).addTo(map);
 
-    //Add meetup location
-    L.marker([34.049814, -118.258197]).addTo(map)
-      .bindPopup("811 Wilshire Blvd. #1460")
-    //Create locations for geojson
-    var cities="data/lacities.geojson";
-
-    //Styles and loads the Hubs
-    $.getJSON(cities, function(data) {
-    var hubsLayer = L.geoJson(data, {
-            style:{
-            fillColor:"#ff7f00",
-            color: "#ff7f00",
-            weight: 1,
-            opacity: 1,
-            fillOpacity: 0.05
-            },
-
-
-    }).addTo(map);
-    });
-
-        // layer for meetup info:
+        // layer for event info:
         var popupLocation1 = new L.LatLng(34.044121, -118.212200);
         var popupContent1 = "<h4><a href='http://bhnc.net'>Boyle Heights Neighborhood Council Meeting</a></h4> \
         <address> \
@@ -174,9 +153,8 @@
         Los Angeles, CA 90033</address>",
         popup1 = new L.Popup();
 
-        //Add meetup location
+        //Add location
         L.marker([34.044121, -118.212200]).addTo(map).bindPopup(popup1);
-
 
         popup1.setLatLng(popupLocation1);
         popup1.setContent(popupContent1);
