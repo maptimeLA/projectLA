@@ -44,18 +44,15 @@
   #top h1, h2, p{
     font-size: 25px;
     text-align: center;
-<<<<<<< HEAD
-    color: #fff;
-    /*link color to white*/
-=======
     color: white;
   }
   #top h4{
     font-size: 16px;
     color: white;
     text-align: center;
-    width: 600px;
->>>>>>> 39732d405175995c427b13d07dbae8f2fdf4bb3d
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
   }
   #top p{
     text-align: center;
