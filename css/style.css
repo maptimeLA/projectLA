@@ -2,6 +2,10 @@
   	margin:0;
   	padding:0; 
  	}
+  @font-face {
+    font-family: "yes please";
+    src: url(https://github.com/maptimeLA/projectLA/blob/master/fonts/yesplease.TTF) format ("truetype");
+  }
   #map { 
   	position:absolute;
   	top:0; 
@@ -31,6 +35,9 @@
     background-position: center;
     background-repeat: none;
     /* fix background image so that it is fixed & centered & sized properly*/
+  }
+  #top h2 {
+    font-family:"yes please", Arial;
   }
   #top h1, h2, p{
     color: #25ABD2;
