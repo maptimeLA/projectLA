@@ -31,7 +31,7 @@
   #topHalf {
     width: 100vw;
     height: 100vh;
-    background-image: url("https://raw.githubusercontent.com/maptimeLA/projectLA/master/images/backgroundimages/LA1955_2000.jpg");
+    background-image: url("https://raw.githubusercontent.com/maptimeLA/projectLA/master/images/backgroundimages/LAtraffic.jpg");
     background-color: #E27E2D;
     background-position: center;
     background-repeat: none;
@@ -43,8 +43,8 @@
   }
   #top h1, h2, p{
     font-size: 25px;
-    color: white;
     text-align: center;
+    color: white;
   }
   #top h4{
     font-size: 16px;
@@ -66,7 +66,7 @@
     text-decoration: none;
   }
   #top a:link, a:hover, a:visited, a:active{
-    color: white;
+    color: #333;
   }
   #top {
     /*center the text in the middle of the screen*/
