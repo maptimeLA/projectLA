@@ -2,9 +2,6 @@
   	margin:0;
   	padding:0; 
  	}
-  h1 {
-    font-family: Helvetica;
-  }
   #map { 
   	position:absolute;
   	top:0; 
@@ -30,10 +27,24 @@
     width: 100vw;
     height: 100vh;
     background-image: url("https://raw.githubusercontent.com/maptimeLA/projectLA/master/images/backgroundimages/LA1955_2000.jpg");
-    background-color: ##25ABD2;
-    background-position: fixed;
+    background-color: #E27E2D;
+    background-position: center;
     background-repeat: none;
-
+    /* fix background image so that it is fixed & centered & sized properly*/
+  }
+  #top h1, h2, p{
+    color: #25ABD2;
+    text-align: center;
+    /*link color to white*/
+  }
+  #top {
+    /*center the text in the middle of the screen*/
+  }
+  #top img{
+    max-width: 350px;
+    margin-right: auto;
+    margin-left: auto;
+    padding-top: 30px;
   }
   #bottomHalf {
     width: 100vw;
