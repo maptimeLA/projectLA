@@ -35,6 +35,7 @@
     background-color: #E27E2D;
     background-position: center;
     background-repeat: none;
+    text-align: center;
     /* fix background image so that it is fixed & centered & sized properly*/
   }
   #top h2{
@@ -43,10 +44,17 @@
   #top h1, h2, p{
     font-size: 25px;
     text-align: center;
-    color: #333;
-    /*link color to white*/
+    color: white;
   }
-  #op p{
+  #top h4{
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #top p{
     text-align: center;
   }
   #button{
@@ -60,7 +68,7 @@
     text-decoration: none;
   }
   #top a:link, a:hover, a:visited, a:active{
-    color: #333;
+    color: #fff;
   }
   #top {
     /*center the text in the middle of the screen*/
@@ -70,6 +78,7 @@
     margin-right: auto;
     margin-left: auto;
     padding-top: 30px;
+    padding-bottom: 20px;
   }
   #bottomHalf {
     width: 100vw;
