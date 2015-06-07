@@ -50,7 +50,9 @@
     font-size: 16px;
     color: white;
     text-align: center;
-    width: 600px;
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
   }
   #top p{
     text-align: center;
