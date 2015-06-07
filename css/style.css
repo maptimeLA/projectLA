@@ -10,8 +10,9 @@
   	position:absolute;
   	top:0; 
   	bottom:0; 
-  	width:100%; 
-  	height: 700px;
+    margin-left: auto;
+  	width: 75vw; 
+  	height: 75vh;
   }
   #logo {
     max-width: 200px;
@@ -36,13 +37,16 @@
     background-repeat: none;
     /* fix background image so that it is fixed & centered & sized properly*/
   }
-  #top h2 {
+  #top h2{
     font-family:"yes please", Arial;
   }
   #top h1, h2, p{
     color: #25ABD2;
     text-align: center;
     /*link color to white*/
+  }
+  #top p{
+    border: 1px 1px 1px 1px;
   }
   #top {
     /*center the text in the middle of the screen*/
