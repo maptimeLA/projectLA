@@ -24,15 +24,10 @@
   <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.4.2.min.js"></script>
 </head>
 <body>
-  <div id="topHalf">
 
-  </div>
-
-
-<div id="bottomHalf">
   <div class="row">
     <div class="col-md-3">
-      <img src="https://raw.githubusercontent.com/maptimeLA/projectLA/master/images/logo.png" div id="logo" class="img-responsive"> 
+      <img src="https://raw.githubusercontent.com/maptimeLA/projectLA/master/images/poolpartycarlogo.jpg" div id="logo"> 
     </div>
     <div class="col-md-9">
       <h1>Event: Awesome Community Hackathon</h1>
@@ -55,28 +50,24 @@
 
         <h4>Which travel options are you open to using?</h4>
         <div id="travelOptions">
-              <ul id="travelOptions">
-              <li>
-              <label class="checkbox-inline">
-              <input type="checkbox" id="inlineCheckbox1" name="travelOptions" value="Car"> Car
-              </label>
-              </li>
-              <li><label class="checkbox-inline">
-              <input type="checkbox" id="inlineCheckbox2" name="travelOptions" value="Bicycle"> Bicycle
-              </label></li>
-              <li><label class="checkbox-inline">
-              <input type="checkbox" id="inlineCheckbox3" name="travelOptions" value="Metro"> Metro
-              </label></li>
-              <li><label class="checkbox-inline">
-              <input type="checkbox" id="inlineCheckbox3" name="travelOptions" value="uberCarpool"> Uber Carpool
-              </label></li>
-              <li><label class="checkbox-inline">
-              <input type="checkbox" id="inlineCheckbox3" name="travelOptions" value="lyftCarpool">Lyft Carpool
-              </label></li>
-              <li><label class="checkbox-inline">
-              <input type="checkbox" id="inlineCheckbox3" name="travelOptions" value="walking">Walking
-              </label></li>
-              </ul>
+          <label class="checkbox-inline">
+            <input type="checkbox" id="inlineCheckbox1" name="travelOptions" value="Car"> Car
+          </label>
+          <label class="checkbox-inline">
+            <input type="checkbox" id="inlineCheckbox2" name="travelOptions" value="Bicycle"> Bicycle
+          </label>
+          <label class="checkbox-inline">
+            <input type="checkbox" id="inlineCheckbox3" name="travelOptions" value="Metro"> Metro
+          </label>
+            <label class="checkbox-inline">
+            <input type="checkbox" id="inlineCheckbox3" name="travelOptions" value="uberCarpool"> Uber Carpool
+          </label>
+          <label class="checkbox-inline">
+            <input type="checkbox" id="inlineCheckbox3" name="travelOptions" value="lyftCarpool">Lyft Carpool
+          </label>
+          <label class="checkbox-inline">
+            <input type="checkbox" id="inlineCheckbox3" name="travelOptions" value="walking">Walking
+          </label>
         </div>
 
         <button type="submit" class="btn btn-primary">Submit</button>
@@ -88,7 +79,6 @@
       <div id="map"></div>
     </div>
   </div>
-</div>
 
 	<script>
 		var map = L.map('map').setView([34.052234, -118.243685], 13);
@@ -110,6 +100,7 @@
         }
     }).addTo(map);
         
+<<<<<<< HEAD
    var cities = L.esri.featureLayer('http://services1.arcgis.com/AXaYBvnJsB5Q7sDF/arcgis/rest/services/lacities/FeatureServer/0', {
         simplifyFactor: 0.35,
         style: function(feature) {
@@ -158,7 +149,24 @@
     //Add meetup location
     L.marker([34.049814, -118.258197]).addTo(map)
       .bindPopup("811 Wilshire Blvd. #1460")
+=======
+    //Create locations for geojson
+    var cities="data/lacities.geojson";
 
+    //Styles and loads the Hubs
+    $.getJSON(cities, function(data) {
+    var hubsLayer = L.geoJson(data, {
+            style:{
+            fillColor:"#ff7f00",
+            color: "#ff7f00",
+            weight: 1,
+            opacity: 1,
+            fillOpacity: 0.05
+            },
+
+
+    }).addTo(map);
+    });
                     
         // layer for meetup info:
         var popupLocation1 = new L.LatLng(34.044121, -118.212200);
@@ -189,6 +197,7 @@
     //Add user location
     L.marker([34.065296, -118.287881]).addTo(map)
       .bindPopup('<h3>Your Starting Location</h3>You have <strong>3</strong> neighbors within <strong>2 miles</strong> of your starting location who want to carpool!<br/><br/> <button type="submit" class="btn btn-primary">Offer to Carpool</button>')
+>>>>>>> 9a3ebe2d1bbe0a321a5e282d167d968ad1b01216
       .openPopup();
         
 	</script>
