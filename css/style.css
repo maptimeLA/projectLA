@@ -2,6 +2,9 @@
   	margin:0;
   	padding:0; 
  	}
+  h1 {
+    font-family: Helvetica;
+  }
   #map { 
   	position:absolute;
   	top:0; 
@@ -12,6 +15,7 @@
   #logo {
     max-width: 200px;
     padding: 15px 0 15px 15px;
+    position: center;
   }
   form {
    padding-left:2em;   
@@ -25,6 +29,9 @@
   #topHalf {
     width: 100vw;
     height: 100vh;
+    background-image: url("https://raw.githubusercontent.com/maptimeLA/projectLA/master/images/backgroundimages/101freewaymural.jpg");
+    background-color: ##25ABD2;
+
   }
   #bottomHalf {
     width: 100vw;
