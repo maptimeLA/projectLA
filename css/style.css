@@ -36,7 +36,6 @@
     background-position: center;
     background-repeat: none;
     text-align: center;
-    /* fix background image so that it is fixed & centered & sized properly*/
   }
   #top h2{
     font-family:"yes please", Arial;
@@ -70,15 +69,12 @@
   #top a:link, a:hover, a:visited, a:active{
     color: #fff;
   }
-  #top {
-    /*center the text in the middle of the screen*/
-  }
   #top img{
-    max-width: 325px;
+    max-width: 35vh;
     margin-right: auto;
     margin-left: auto;
-    padding-top: 30px;
-    padding-bottom: 20px;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
   }
   #bottomHalf {
     width: 100vw;
