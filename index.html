@@ -110,6 +110,7 @@
       //Loading ESRI Feature Services
     var county = L.esri.featureLayer('http://services.arcgis.com/obpUicnfIYG1DOsR/arcgis/rest/services/lacounty/FeatureServer/0', {
         simplifyFactor: 0.35,
+        clickable: false,
         style: function(feature) {
           return {
             color: '#555',
@@ -122,6 +123,7 @@
 
    var cities = L.esri.featureLayer('http://services1.arcgis.com/AXaYBvnJsB5Q7sDF/arcgis/rest/services/lacities/FeatureServer/0', {
         simplifyFactor: 0.35,
+        clickable: false,
         style: function(feature) {
           return {
             color: '#00ADE0',
