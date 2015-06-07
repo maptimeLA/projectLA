@@ -8,9 +8,15 @@
   	top:0; 
   	bottom:0; 
   	width:100%; 
-  	height: 500px;
+  	height: 700px;
   }
   #logo {
     width: 325px;
   }
+  form {
+   padding-left:2em;   
+  }
+.leaflet-popup-content {
+ text-align:center;   
+}
 </style>
