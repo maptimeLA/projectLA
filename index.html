@@ -9,30 +9,45 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css">
+  <link rel="stylesheet" href="css/leaflet.awesome-markers.css">
   <link href="css/style.css" rel="stylesheet">
 
   <!-- Favicon
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link rel="icon" type="image/png" href="images/favicon.png">
-	
+
   <!-- Javascript and Maps
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css" />
   <script src="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js"></script>
-  <script src="http://cdn.jsdelivr.net/leaflet.esri/latest/esri-leaflet.js"></script>
+  <script src="http://cdn.jsdelivr.net/leaflet.esri/1.0.0-rc.8/esri-leaflet.js"></script>
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.4.2.min.js"></script>
+  <script src="js/leaflet.awesome-markers.js"></script>
 </head>
 <body>
+  <div id="topHalf">
+    <div id="top">
+    <header>
+      <img src="https://raw.githubusercontent.com/maptimeLA/projectLA/master/images/logo.png" class="img-responsive">
+    </header>
+    <h2 id="tagline">Matching up people on the move</h2>
+    <h4>Pool Party is a place for event-goers to connect & coordinate their commute. Our mission is to build a more positive tool that will promote carpooling, encourage people to choose public transit & show them the health benefits of traveling by foot or bicycle.</h4><br>
+    <h2><a href="latimes.com/local/california/la-me-hackathon-20150607-story.html"><i>"...fixing LA's perennial problem: commuting." <br>-Los Angeles Times</i></a></h2><br>
+    <p><button id="button" class="btn btn-primary"><a class="scroll-link" href="#bottomHalf">LET'S GO!</a></button><p>
+    </div>
+  </div>
 
+
+<div id="bottomHalf">
   <div class="row">
     <div class="col-md-3">
-      <img src="https://raw.githubusercontent.com/maptimeLA/projectLA/master/images/poolpartycarlogo.jpg" div id="logo"> 
+      <img src="https://raw.githubusercontent.com/maptimeLA/projectLA/master/images/logo.png" div id="logo" class="img-responsive">
     </div>
     <div class="col-md-9">
-      <h1>Meetup #1</h1>
-      <h3>123 Wilshire Blvd. | Civic Center: Red Line @ 7PM</h3>
-      <p>Hello! Parking costs $15 in the building. There is underground bike parking. Lot closes at 10:30PM. Call to get into the room: 310-123-1234</p>
+      <h1>Event: Boyle Heights Neighborhood Council Meeting</h1>
+      <h3>2200 E. 1st St. | Benjamin Franklin Library: Gold Line @ 6:15PM</h3>
     </div>
   </div>
 
@@ -44,30 +59,34 @@
           <input type="text" class="form-control" name="userName" id="userName" placeholder="Enter your first and last name">
         </div>
         <div class="form-group">
-          <label for="originLocation">Where are you travelling from?</label>
+          <label for="originLocation">Where are you traveling from?</label>
           <input type="text" class="form-control" name="originName" id="originLocation" placeholder="Enter the your origin address">
         </div>
 
         <h4>Which travel options are you open to using?</h4>
         <div id="travelOptions">
-          <label class="checkbox-inline">
-            <input type="checkbox" id="inlineCheckbox1" name="travelOptions" value="Car"> Car
-          </label>
-          <label class="checkbox-inline">
-            <input type="checkbox" id="inlineCheckbox2" name="travelOptions" value="Bicycle"> Bicycle
-          </label>
-          <label class="checkbox-inline">
-            <input type="checkbox" id="inlineCheckbox3" name="travelOptions" value="Metro"> Metro
-          </label>
-            <label class="checkbox-inline">
-            <input type="checkbox" id="inlineCheckbox3" name="travelOptions" value="uberCarpool"> Uber Carpool
-          </label>
-          <label class="checkbox-inline">
-            <input type="checkbox" id="inlineCheckbox3" name="travelOptions" value="lyftCarpool">Lyft Carpool
-          </label>
-          <label class="checkbox-inline">
-            <input type="checkbox" id="inlineCheckbox3" name="travelOptions" value="walking">Walking
-          </label>
+              <ul id="travelOptions">
+              <li>
+              <label class="checkbox-inline">
+              <input type="checkbox" id="inlineCheckbox1" name="travelOptions" value="Car"> Car
+              </label>
+              </li>
+              <li><label class="checkbox-inline">
+              <input type="checkbox" id="inlineCheckbox2" name="travelOptions" value="Bicycle"> Bicycle
+              </label></li>
+              <li><label class="checkbox-inline">
+              <input type="checkbox" id="inlineCheckbox3" name="travelOptions" value="Metro"> Metro
+              </label></li>
+              <li><label class="checkbox-inline">
+              <input type="checkbox" id="inlineCheckbox3" name="travelOptions" value="uberCarpool"> Uber Carpool
+              </label></li>
+              <li><label class="checkbox-inline">
+              <input type="checkbox" id="inlineCheckbox3" name="travelOptions" value="lyftCarpool">Lyft Carpool
+              </label></li>
+              <li><label class="checkbox-inline">
+              <input type="checkbox" id="inlineCheckbox3" name="travelOptions" value="walking">Walking
+              </label></li>
+              </ul>
         </div>
 
         <button type="submit" class="btn btn-primary">Submit</button>
@@ -79,42 +98,125 @@
       <div id="map"></div>
     </div>
   </div>
+</div>
 
 	<script>
-		var map = L.map('map').setView([34.052234, -118.243685], 13);
+		var map = L.map('map').setView([34.045480, -118.200137], 16);
         //Loading ESRI Basemap and Labels
 		L.esri.basemapLayer('Gray').addTo(map);
         L.esri.basemapLayer('GrayLabels').addTo(map);
 
 
-      //Loading ESRI Feature Services 
+      //Loading ESRI Feature Services
     var county = L.esri.featureLayer('http://services.arcgis.com/obpUicnfIYG1DOsR/arcgis/rest/services/lacounty/FeatureServer/0', {
         simplifyFactor: 0.35,
+        clickable: false,
         style: function(feature) {
           return {
             color: '#555',
             fill: null,
             weight: 3,
-            opacity: 50,
+            opacity: 0.25,
           }
         }
     }).addTo(map);
-        
-    var cities = L.esri.featureLayer('http://services1.arcgis.com/AXaYBvnJsB5Q7sDF/arcgis/rest/services/lacities/FeatureServer/0', {
+
+   var cities = L.esri.featureLayer('http://services1.arcgis.com/AXaYBvnJsB5Q7sDF/arcgis/rest/services/lacities/FeatureServer/0', {
         simplifyFactor: 0.35,
+        clickable: false,
         style: function(feature) {
           return {
             color: '#00ADE0',
-            weight: 2,
-            opacity: 1
+            weight: 1,
+            opacity: 1,
+            fillOpacity: 0.03
           }
         }
     }).addTo(map);
-                
-    //Add meetup location
-    L.marker([34.049814, -118.258197]).addTo(map)
-      .bindPopup("811 Wilshire Blvd. #1460")
+
+    var metro = L.esri.featureLayer('http://services1.arcgis.com/AXaYBvnJsB5Q7sDF/arcgis/rest/services/MetroCombined/FeatureServer/0', {
+        style: function (feature) {
+            var c,o = 1;
+            switch (feature.properties.LineName) {
+               case 'Blue Line':
+                    c = '#0070BE';
+                    break;
+                case 'Gold Line':
+                    c = '#FFBE00';
+                    break;
+                case 'Red/Purple Lines':
+                    c = '#ED1717';
+                    break;
+                case 'Orange Line':
+                    c = '#F77903';
+                  break;
+                case 'Expo Line':
+                    c = '#00A3E8';
+                    break;
+                case 'Green Line':
+                    c = '#69C167';
+                    break;
+                case 'Silver Line':
+                    c = '#AEB9BD';
+                    break;
+                case 'Orange Line':
+                    c = '#F77903';
+                    break;
+      }
+      return {color: c, opacity: o, weight: 5};
+    }
+  }).addTo(map);
+
+        var destinationMarker = L.AwesomeMarkers.icon({
+          icon: 'university',
+          prefix: 'fa',
+          markerColor: 'red'
+        }), personMarker = L.AwesomeMarkers.icon({
+          icon: 'street-view',
+          prefix: 'fa'
+        });
+
+        // layer for event info:
+        var popupLocation1 = new L.LatLng(34.049814, -118.258197);
+        var popupContent1 = "<h4><a href='http://bhnc.net'>Boyle Heights Neighborhood Council Meeting</a></h4> \
+        <address> \
+        Benjamin Franklin Library<br /> \
+        2200 E. 1st St.<br /> \
+        Los Angeles, CA 90033</address>";
+
+        //Add meetup location
+        L.marker([34.044121, -118.212200], {icon: destinationMarker}).addTo(map).bindPopup(popupContent1);
+
+        // friend markers:
+        L.marker([34.039445, -118.217124], {icon: personMarker}).addTo(map)
+      .bindPopup('<h4 style="text-align: left">Mary</h4><button type="submit" class="btn btn-primary linkup">Offer to Go Together</button>');
+        L.marker([34.045480, -118.200137], {icon: personMarker}).addTo(map)
+      .bindPopup("<h4>Cary Wu</h4>");
+
+     var routes = L.multiPolyline([[
+        [34.043176, -118.218317],
+        [34.043113, -118.217517],
+        [34.042271, -118.215501]
+      ], [
+        [34.039445, -118.217124],
+        [34.044910, -118.213790],
+        [34.044367, -118.212535],
+        [34.044121, -118.212200]
+      ]]);
+
+    //Add user location
+    var btn = $('<button type="submit" class="btn btn-primary">Offer to Carpool</button>');
+    // btn.click(function() { })
+    L.marker([34.043176, -118.218317], {icon: personMarker}).addTo(map)
+      .bindPopup('<h3>Your Starting Location</h3>You have <strong>3</strong> neighbors within <strong>2 miles</strong> of your starting location who want to get together!')
       .openPopup();
+
+    $('body').on('click', '.linkup', function() {
+      routes.addTo(map);
+    });
+
+
+
 	</script>
   <script type="text/javascript">
     Parse.initialize("6HzSsTcCp9FKm5Vy9yse5yHMXazdIX3n3zn0vMJA", "l3QRS3vcjfNttOuOwub8GgWXF4aSLewLMipnQM3F");
@@ -144,6 +246,13 @@
       });
       console.log($(this).serializeArray());
       return false;
+    });
+
+    $('.scroll-link').click(function(e) {
+      e.preventDefault();
+      $('body, html').animate({
+        'scrollTop':   $($(this).attr("href")).offset().top - $('.navbar').height() - 10
+      }, 400);
     });
   </script>
 
